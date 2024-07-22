@@ -1,4 +1,6 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
+
 
 module.exports = {
   entry: './src/index.tsx',
@@ -41,4 +43,11 @@ module.exports = {
     open: true,
   },
   mode: 'development',
+  plugins: [
+    new Dotenv({
+      path: './.env', // Path to your .env file
+      safe: true, // Load '.env.example' to verify the .env variables are all set.
+      systemvars: true, // Load all the system variables that are available in your environment
+    }),
+  ],
 };
