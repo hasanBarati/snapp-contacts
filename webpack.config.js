@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx','.css'],
   },
   module: {
     rules: [
@@ -45,9 +45,9 @@ module.exports = {
   mode: 'development',
   plugins: [
     new Dotenv({
-      path: './.env', // Path to your .env file
-      safe: true, // Load '.env.example' to verify the .env variables are all set.
-      systemvars: true, // Load all the system variables that are available in your environment
+      path: './.env', 
+      safe: true, 
+      systemvars: true,
     }),
   ],
 };
