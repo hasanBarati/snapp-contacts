@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IContact } from "../../../types";
+import { baseURL } from "../../../api";
 
 export function useContactDetail(id: string | undefined) {
   const [data, setData] = useState<IContact | null>(null);
@@ -14,7 +15,7 @@ export function useContactDetail(id: string | undefined) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/passenger/${id}`,
+          `${baseURL}/passenger/${id}`,
           { signal }
         );
         const result = await response.json();

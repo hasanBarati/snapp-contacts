@@ -1,4 +1,3 @@
-export type ApiStatus = "IDLE" | "PENDING" | "SUCCESS" | "ERROR";
 
 export interface IContact {
   first_name: string;

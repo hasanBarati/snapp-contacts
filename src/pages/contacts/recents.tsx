@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { IContact } from "../../types";
 import EmptyData from "../../components/empty-data";
 
-export default function Recents() {
+const Recents = () => {
   const recentData: IContact[] = JSON.parse(
     localStorage.getItem("recentContacts")!
   );
@@ -25,7 +25,6 @@ export default function Recents() {
               className="image"
               loading="lazy"
             />
-
             <p>{item.first_name}</p>
           </li>
         ))}
@@ -33,4 +32,6 @@ export default function Recents() {
       {!recentData ? <EmptyData /> : null}
     </>
   );
-}
+};
+
+export default Recents;

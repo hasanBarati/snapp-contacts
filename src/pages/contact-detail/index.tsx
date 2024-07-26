@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Details } from "./details";
-import { Header } from "./header";
 import { useContactDetail } from "./hooks/useFethc";
-import { Error } from "../../components/error";
+import Error  from "../../components/error";
 import EmptyData from "../../components/empty-data";
+import Header from "./header";
+import Details from "./details";
 
-function ContactDetail() {
+const ContactDetail = () => {
   const { id } = useParams<string>();
   const { data, loading, error } = useContactDetail(id);
 
@@ -29,6 +29,6 @@ function ContactDetail() {
       </div>
     </div>
   );
-}
+};
 
 export default ContactDetail;

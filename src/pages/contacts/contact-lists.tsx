@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { IContact } from "../../types";
 import SkeletonLoader from "../../components/skelton-loader";
 import EmptyData from "../../components/empty-data";
-import { Error } from "../../components/error";
+import  Error  from "../../components/error";
 
 interface IcontactListsProps {
   items: IContact[];

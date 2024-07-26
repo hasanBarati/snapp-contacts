@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IContact } from "../../../types";
-import { containsOnlyDigits } from "../../../utils";
+import { buildUrl } from "../../../utils";
 
 const useContactList = () => {
   const [items, setItems] = useState<IContact[]>([]);
@@ -8,8 +8,15 @@ const useContactList = () => {
   const [query, setQuery] = useState<string>("");
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error,setError] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false);
   const loader = useRef(null);
+
+  const handleSearch = (searchQuery: string) => {
+    setItems([]);
+    setPage(0);
+    setHasMore(true);
+    setQuery(searchQuery);
+  };
 
   useEffect(() => {
     loadItems();
@@ -19,38 +26,16 @@ const useContactList = () => {
     if (loading) return;
     setLoading(true);
     try {
-      let phone = "",
-        name = "";
-      containsOnlyDigits(query) ? (phone = query) : (name = query);
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/passenger/?` +
-          new URLSearchParams({
-            ...(query &&
-              query !== "" && {
-                where: `{"first_name":{"contains":"${name}"},"phone":{"contains":"${phone}"}}`,
-              }),
-
-            sort: "createdAt",
-            limit: "10",
-            skip: page === 0 ? String(page) : String(page - 1),
-          })
-      );
+      const response = await fetch(buildUrl(query, page));
       const data = await response.json();
       setItems((prevItems) => [...prevItems, ...data.items]);
-      setError(false)
+      setError(false);
       if (data.items.length === 0) setHasMore(false);
     } catch (error) {
-       setError(true)
+      setError(true);
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleSearch = (searchQuery: string) => {
-    setItems([]);
-    setPage(0);
-    setHasMore(true);
-    setQuery(searchQuery);
   };
 
   useEffect(() => {
@@ -71,7 +56,7 @@ const useContactList = () => {
     };
   }, [hasMore]);
 
-  return { items, loader, hasMore, handleSearch, loading,error };
+  return { items, loader, hasMore, handleSearch, loading, error };
 };
 
 export default useContactList;
