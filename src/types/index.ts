@@ -1,17 +1,19 @@
 export type ApiStatus = "IDLE" | "PENDING" | "SUCCESS" | "ERROR";
 
 export interface IContact {
-  address: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  gender: string;
+  phone: string;
+  note: string;
+  telegram: string;
   avatar: string;
   company: string;
-  email: string;
-  first_name: string;
-  gender: string;
+  address: string | null;
+  createdAt: number;
+  updatedAt: number;
   id: number;
-  last_name: string;
-  note: string;
-  phone: string;
-  telegram: string;
 }
 
 export interface Imeta {
@@ -25,3 +27,5 @@ export interface IContactResponse{
     items:IContact[]
     meta:Imeta
 }
+
+

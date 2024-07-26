@@ -1,52 +1,57 @@
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
-
+const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: "./src/index.tsx",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx','.css'],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: "ts-loader",
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      
     ],
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, "dist"),
     },
     compress: true,
     port: 9000,
     open: true,
+    historyApiFallback: true,
   },
-  mode: 'development',
+  mode: "development",
   plugins: [
     new Dotenv({
-      path: './.env', 
-      safe: true, 
+      path: "./.env",
+      safe: true,
       systemvars: true,
     }),
   ],

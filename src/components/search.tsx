@@ -16,10 +16,13 @@ const SearchForm = ({ onSearch }: IsearchProps) => {
       <input
         type="text"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) =>{ 
+          setSearchTerm(e.target.value)
+          onSearch(e.target.value);
+        }}
         placeholder="Search..."
       />
-      <button type="submit">Search</button>
+
     </form>
   );
 };

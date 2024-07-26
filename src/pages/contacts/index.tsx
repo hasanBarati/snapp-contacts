@@ -1,17 +1,16 @@
 import React from "react";
 import SearchForm from "../../components/search";
 import useContactList from "./hooks/useFetch";
-import ContactLists from "../../components/contact-lists";
+import ContactLists from "./contact-lists";
 
 function Contacts() {
-  const { items, loader, handleSearch,loading } = useContactList();
+  const { items, loader, handleSearch, loading } = useContactList();
 
-  console.log("loading",loading)
   return (
-    <>
+    <main>
       <SearchForm onSearch={handleSearch} />
-      <ContactLists items={items} loaderRef={loader}   loading={loading} />
-    </>
+      <ContactLists items={items} loaderRef={loader} loading={loading} />
+    </main>
   );
 }
 

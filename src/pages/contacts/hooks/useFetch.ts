@@ -4,10 +4,10 @@ import { containsOnlyDigits } from "../../../utils";
 
 const useContactList = () => {
   const [items, setItems] = useState<IContact[]>([]);
-  const [page, setPage] = useState(0);
-  const [query, setQuery] = useState("");
-  const [hasMore, setHasMore] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState<number>(0);
+  const [query, setQuery] = useState<string>("");
+  const [hasMore, setHasMore] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const loader = useRef(null);
 
   useEffect(() => {
@@ -35,8 +35,6 @@ const useContactList = () => {
           })
       );
       const data = await response.json();
-
-      //@ts-ignore
       setItems((prevItems) => [...prevItems, ...data.items]);
       if (data.items.length === 0) setHasMore(false);
     } catch (error) {
@@ -71,7 +69,7 @@ const useContactList = () => {
     };
   }, [hasMore]);
 
-  return { items, loader, hasMore, handleSearch,loading };
+  return { items, loader, hasMore, handleSearch, loading };
 };
 
 export default useContactList;
