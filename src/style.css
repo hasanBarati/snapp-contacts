@@ -131,3 +131,58 @@
    text-align: center;
  }
  
+ @keyframes loading {
+   to {
+     background-position-x: -20%;
+   }
+ }
+ 
+ .skeleton {
+   background-color: var(--main-color);
+   background: linear-gradient(
+     100deg,
+     rgba(255, 255, 255, 0) 40%,
+     rgba(255, 255, 255, 0.5) 50%,
+     rgba(255, 255, 255, 0) 60%
+   ) var(--main-color);
+   background-size: 200% 100%;
+   background-position-x: 11.25rem;
+   animation: 1s loading ease-in-out infinite;
+ }
+ 
+ .skeleton-contactDetails {
+   width: 6.25rem;
+ }
+ 
+ .skeleton-text {
+   width: 70%;
+   height: 1rem;
+   margin-bottom: 0.5rem;
+ }
+ 
+ .skeleton-info {
+   display: flex;
+   column-gap: 0.313rem;
+   align-items: center;
+ }
+ 
+ .skeleton-avatar {
+   width: 3.125rem;
+   height: 3.125rem;
+   border-radius: 50%;
+ }
+ 
+ .skeleton-phone {
+   width: 6.25rem;
+   height: 1rem;
+ }
+ 
+ .skeleton-card {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1.25rem;
+   border: 0.0625rem solid var(--main-color);
+   border-radius: 0.313rem;
+   margin-top: 0.625rem;
+ }
