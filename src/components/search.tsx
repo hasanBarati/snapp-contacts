@@ -25,6 +25,7 @@ const SearchForm = ({ onSearch }: IsearchProps) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search..."
+        className="search-input"
       />
     </form>
   );

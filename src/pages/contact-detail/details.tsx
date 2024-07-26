@@ -44,32 +44,17 @@ export function Details({ data }: { data: IContact }) {
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnklEQVR4nO3WP2sUQRzG8UEUYuMfQlJE1NK34BtICt+AXSAEjE0gUUhSWRj0DVjY+ALs8hKO/ClSrCAp7+b5/thl0Uabk0DAYsPAGk6dvdvjdrfKAz9YmN357MzsLOPcdcak3+/fkbQMrEp6Haq8Xg5trsmY2ZyZvQSOgd9AUVGh7TjcG56ZCQU2JH0fg0VL0jfgxdRgmqb3JR1MC0Ze4CD0VQsNawUks6Ij+NeJeK/XuwkcNYWO4Ieh70pY0qum0RF8u2qKF4BhWzAwDMZ/MLDZIlqUtRmDTzqAT2Jwm9Nc/Jnuv1Azu9cBWpQf2d0rOM/z+a7gPM/n/91K5x3Av2J7+EsHcBKD9zqAd2LwI+CiRfRiMBg8jP69JO23BUt666qSZdlt4KwF+Cz07cbFe78I9BscqdI0XXJ1YmZbDaGnwONaaLnWn2cEz8P3kiTJrdqomT2dcKgbVynwPiyXmybe+2eSflSM4ifw3Hu/BryT9BH4ALyRtA48cdOmKIobZUfRaQM+ZVn2wLURM5sDVsoDwW45ipWJ2+A6rl4uAVM2i6U2+TKiAAAAAElFTkSuQmCC",
     },
   ];
-
-  const render = (
-    name: string,
-    value: string,
-    image: { src: string; alt: string },
-    iconSrc: string
-  ) => {
-    return (
-      <div key={name} className="details-content-item">
-        <div className="social-item">
-          <img alt={image.alt} src={image.src} />
-          <div className="social-item-info">
-            <span className="social-item-name">{name}</span>
-            <span>{value}</span>
-          </div>
+  
+  return socialItems.map(({ name, value, image, iconSrc }) => (
+    <div key={name} className="details-content-item">
+      <div className="social-item">
+        <img alt={image.alt} src={image.src} />
+        <div className="social-item-info">
+          <span className="social-item-name">{name}</span>
+          <span>{value}</span>
         </div>
-        <img alt="svgImg" src={iconSrc} />{" "}
       </div>
-    );
-  };
-
-  return (
-    <>
-      {socialItems.map(({ name, value, image, iconSrc }) =>
-        render(name, value, image, iconSrc)
-      )}
-    </>
-  );
+      <img alt="" src={iconSrc} />{" "}
+    </div>
+  ));
 }

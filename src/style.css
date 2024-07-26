@@ -65,7 +65,7 @@
    background-color: var(--main-color);
  }
  
- input[type=text] {
+ .search-input {
    width: 100%;
    box-sizing: border-box;
    border: 0.125rem solid var(--main-color);
