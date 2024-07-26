@@ -1,6 +1,7 @@
 import React, { MutableRefObject } from "react";
 import { useNavigate } from "react-router-dom";
 import { IContact } from "../../types";
+import SkeletonLoader from "../../components/skelton-loader";
 
 interface IcontactListsProps {
   items: IContact[];
@@ -10,7 +11,7 @@ interface IcontactListsProps {
 const ContactLists = ({ items, loaderRef, loading }: IcontactListsProps) => {
   const navigate = useNavigate();
   const recentData = JSON.parse(localStorage.getItem("recentContacts")!);
-  
+
   function handleClick(item: IContact) {
     let newArray = recentData ?? [];
     const isExist = newArray.some((arr: IContact) => arr.id === item.id);
@@ -20,7 +21,6 @@ const ContactLists = ({ items, loaderRef, loading }: IcontactListsProps) => {
       newArray = newArray.slice(0, 4);
       localStorage.setItem("recentContacts", JSON.stringify(newArray));
     }
-
     navigate(`/contact/${item.id}`);
   }
 
@@ -52,7 +52,11 @@ const ContactLists = ({ items, loaderRef, loading }: IcontactListsProps) => {
         ))}
       </ul>
 
-      {loading ? "...loading" : null}
+      {loading
+        ? Array.from({ length: 4 }).map((_, index) => (
+            <SkeletonLoader key={index} />
+          ))
+        : null}
       <div ref={loaderRef} />
     </>
   );
