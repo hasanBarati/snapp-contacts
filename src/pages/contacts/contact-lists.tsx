@@ -9,10 +9,21 @@ interface IcontactListsProps {
 }
 const ContactLists = ({ items, loaderRef, loading }: IcontactListsProps) => {
   const navigate = useNavigate();
-
+  const recentData = JSON.parse(localStorage.getItem("recentContacts")!);
+  
   function handleClick(item: IContact) {
+    let newArray = recentData ?? [];
+    const isExist = newArray.some((arr: IContact) => arr.id === item.id);
+
+    if (!isExist) {
+      newArray = [item, ...newArray];
+      newArray = newArray.slice(0, 4);
+      localStorage.setItem("recentContacts", JSON.stringify(newArray));
+    }
+
     navigate(`/contact/${item.id}`);
   }
+
   return (
     <>
       <h2>Contact list</h2>

@@ -47,7 +47,23 @@
    align-items: center;
  }
  
-
+ .recent {
+   display: grid;
+   grid-template-columns: repeat(4, auto);
+ }
+ 
+ .recent .recent-contact-lists {
+   display: flex;
+   flex-direction: column;
+   row-gap: 0.313rem;
+   align-items: center;
+   cursor: pointer;
+ }
+ 
+ .recent  img {
+   border-radius: 50%;
+   background-color: var(--main-color);
+ }
  
  input[type=text] {
    width: 100%;
