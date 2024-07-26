@@ -33,7 +33,7 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   cursor: pointer;
+   cursor: pointer;   
  }
  
  .contact-list:hover {
@@ -127,10 +127,7 @@
    column-gap: 0.313rem;
  }
 
- .empty {
-   text-align: center;
- }
- 
+
  @keyframes loading {
    to {
      background-position-x: -20%;
@@ -185,4 +182,18 @@
    border: 0.0625rem solid var(--main-color);
    border-radius: 0.313rem;
    margin-top: 0.625rem;
+ }
+
+ .error{
+   font-size: 2rem;
+   color:red;
+   text-align: center;
+   font-weight: bold;
+
+ }
+ .empty {
+   text-align: center;
+ }
+ .empty,.error{
+   margin-top: 4rem;
  }

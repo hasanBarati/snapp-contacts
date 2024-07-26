@@ -8,6 +8,7 @@ const useContactList = () => {
   const [query, setQuery] = useState<string>("");
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error,setError] = useState<boolean>(false)
   const loader = useRef(null);
 
   useEffect(() => {
@@ -36,9 +37,10 @@ const useContactList = () => {
       );
       const data = await response.json();
       setItems((prevItems) => [...prevItems, ...data.items]);
+      setError(false)
       if (data.items.length === 0) setHasMore(false);
     } catch (error) {
-      console.error("Error fetching items", error);
+       setError(true)
     } finally {
       setLoading(false);
     }
@@ -69,7 +71,7 @@ const useContactList = () => {
     };
   }, [hasMore]);
 
-  return { items, loader, hasMore, handleSearch, loading };
+  return { items, loader, hasMore, handleSearch, loading,error };
 };
 
 export default useContactList;

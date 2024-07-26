@@ -52,7 +52,7 @@ export function Details({ data }: { data: IContact }) {
     iconSrc: string
   ) => {
     return (
-      <div className="details-content-item">
+      <div key={name} className="details-content-item">
         <div className="social-item">
           <img alt={image.alt} src={image.src} />
           <div className="social-item-info">
@@ -60,7 +60,6 @@ export function Details({ data }: { data: IContact }) {
             <span>{value}</span>
           </div>
         </div>
-        
         <img alt="svgImg" src={iconSrc} />{" "}
       </div>
     );
@@ -70,7 +69,6 @@ export function Details({ data }: { data: IContact }) {
     <>
       {socialItems.map(({ name, value, image, iconSrc }) =>
         render(name, value, image, iconSrc)
-        // <SocialItem key={name} name={name} value={value} iconSrc={iconSrc} />
       )}
     </>
   );
