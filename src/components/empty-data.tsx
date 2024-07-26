@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EmptyData() {
+const  EmptyData=()=> {
   return (
     <div className="empty">
       <img
@@ -11,3 +11,5 @@ export default function EmptyData() {
     </div>
   );
 }
+
+export default EmptyData

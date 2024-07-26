@@ -5,14 +5,12 @@ import Contacts from "./pages/contacts";
 
 const App = () => {
   return (
-    <>
+    <main>
       <Routes>
-        <Route   path="/" element={<Contacts />} />
+        <Route path="/" element={<Contacts />} />
         <Route path="/contact/:id" element={<ContactDetail />} />
       </Routes>
-
-      
-    </>
+    </main>
   );
 };
 

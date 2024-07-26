@@ -1,11 +1,7 @@
 import React from "react";
 
-export function Error() {
-  return (
+const Error = () => {
+  return <p className="error">Oops Something went wrong</p>;
+};
 
-      <p className="error">
-        Oops Something went wrong
-      </p>
- 
-  );
-}
+export default Error;
