@@ -12,7 +12,6 @@ function Contacts() {
       <SearchForm onSearch={handleSearch} />
       <Recents/>
       <ContactLists items={items} loaderRef={loader} loading={loading} error={error} />
-
     </main>
   );
 }
