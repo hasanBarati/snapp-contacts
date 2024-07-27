@@ -68,7 +68,7 @@ const ContactLists = ({
             <SkeletonLoader key={index} />
           ))
         : null}
-      {items.length === 0 ? <EmptyData /> : null}
+      {items.length === 0 && !loading ? <EmptyData /> : null}
       <div ref={loaderRef} />
     </>
   );
