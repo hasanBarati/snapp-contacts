@@ -28,15 +28,16 @@ Installation
 1.  **Clone the repository**:
 
 
-    `git clone https://github.com/your-username/contact-app.git
-    cd contact-app`
+    `git clone https://github.com/your-username/contact-app.git`
+    
+2.   **cd contact-app**:
 
-2.  **Install dependencies**:
+3.  **Install dependencies**:
 
 
     `npm install`
 
-3.  **Start the development server**:
+4.  **Start the development server**:
 
 
     `npm start`
