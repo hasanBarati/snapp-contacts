@@ -1,14 +1,14 @@
 {
-  "name": "frontend",
+  "name": "snapp-contacts",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A contacts management app for Snapp passengers",
+  "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "hasanBarati",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.24.9",
